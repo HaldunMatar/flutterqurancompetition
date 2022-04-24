@@ -4,9 +4,9 @@ import 'package:qurancompetition/Question.dart';
 import 'package:qurancompetition/provider.dart';
 
 class questionsgroup extends StatefulWidget {
-  questionsgroup(String this.id, {Key? key}) : super(key: key);
+  questionsgroup(int this.id, {Key? key}) : super(key: key);
   static final String questionsgroupName = 'ccc';
-  String id;
+  int id;
   @override
   State<questionsgroup> createState() => _questionsgroupState();
 }
@@ -15,7 +15,7 @@ class _questionsgroupState extends State<questionsgroup> {
   @override
   Widget build(BuildContext context) {
     Map<String, dynamic> groupQuestion =
-        context.read<providerdata>().data.elementAt(int.parse(widget.id));
+        context.read<providerdata>().data.elementAt(widget.id);
     return Directionality(
       textDirection: TextDirection.rtl,
       child: Scaffold(
@@ -28,16 +28,28 @@ class _questionsgroupState extends State<questionsgroup> {
               .map<Widget>(
                 (catData) => ElevatedButton(
                     style: ButtonStyle(
-                        backgroundColor: MaterialStateProperty.all(
-                            Color.fromARGB(255, 91, 167, 156))),
+                      backgroundColor: catData['slected']
+                          ? MaterialStateProperty.all(
+                              Color.fromARGB(255, 218, 36, 36),
+                            )
+                          : MaterialStateProperty.all(
+                              Color.fromARGB(255, 33, 53, 165)),
+                    ),
                     child: Text(
                       (int.parse(catData['id2']) + 1).toString(),
                     ),
                     onPressed: () {
                       List l = groupQuestion['list'] as List;
-                      setState(() {
+                      /* setState(() {
                         l.removeWhere(
                             (element) => element['id2'] == catData['id2']);
+                      });*/
+
+                      setState(() {
+                        var index = groupQuestion['list'].indexOf(catData);
+                        print(l.elementAt(index)['slected']);
+                        l.elementAt(index)['slected'] = true;
+                        print(l.elementAt(index)['slected']);
                       });
 
                       Navigator.push(
