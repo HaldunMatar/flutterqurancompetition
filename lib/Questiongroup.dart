@@ -33,10 +33,10 @@ class _questionsgroupState extends State<questionsgroup> {
                               Color.fromARGB(255, 218, 36, 36),
                             )
                           : MaterialStateProperty.all(
-                              Color.fromARGB(255, 33, 53, 165)),
+                              Color.fromARGB(255, 33, 165, 51)),
                     ),
                     child: Text(
-                      (int.parse(catData['id2']) + 1).toString(),
+                      (int.parse(catData['id2'])).toString(),
                     ),
                     onPressed: () {
                       List l = groupQuestion['list'] as List;
