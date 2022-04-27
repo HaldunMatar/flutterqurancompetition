@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:qurancompetition/Questiongroup.dart';
 import 'package:qurancompetition/provider.dart';
+import 'package:qurancompetition/thems.dart';
 
 import 'DATA.dart';
 
@@ -23,8 +24,8 @@ class MyApp extends StatelessWidget {
         title: 'Flutter Demo',
         debugShowCheckedModeBanner: false,
         theme: ThemeData(
-          primarySwatch: Colors.blue,
-        ),
+            //primarySwatch: Colors.blue,
+            ),
         home: Directionality(
             textDirection: TextDirection.rtl,
             child: MyHomePage(title: 'مسابقة القرآن الكريم ')),
@@ -76,6 +77,7 @@ class _MyHomePageState extends State<MyHomePage> {
     // than having to individually change instances of widgets.
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: appbarcolor,
         // Here we take the value from the MyHomePage object that was created by
         // the App.build method, and use it to set our appbar title.
         title: Text(widget.title),
@@ -83,43 +85,48 @@ class _MyHomePageState extends State<MyHomePage> {
       body: Center(
         // Center is a layout widget. It takes a single child and positions it
         // in the middle of the parent.
-        child: GridView(
-          padding: const EdgeInsets.all(25),
-          children: context
-              .read<providerdata>()
-              .data
-              .map(
-                (catData) => ElevatedButton(
-                    style: ButtonStyle(
-                        backgroundColor: MaterialStateProperty.all(
-                            Color.fromARGB(255, 91, 167, 156))),
-                    child: Text(
-                      catData['title'].toString(),
-                      style: TextStyle(fontSize: 20),
-                    ),
-                    onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) =>
-                                questionsgroup(alldata.indexOf(catData))),
-                      );
-                    }),
-              )
-              .toList(),
-          gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
-            maxCrossAxisExtent: 200,
-            childAspectRatio: 3 / 2,
-            crossAxisSpacing: 50,
-            mainAxisSpacing: 50,
+        child: Stack(children: [
+          Container(color: secondrycolor),
+          GridView(
+            shrinkWrap: true,
+            padding: const EdgeInsets.all(25),
+            children: context
+                .read<providerdata>()
+                .data
+                .map(
+                  (catData) => ElevatedButton(
+                      style: ButtonStyle(
+                          backgroundColor:
+                              MaterialStateProperty.all(Prinarycolor)),
+                      child: Text(
+                        catData['title'].toString(),
+                        style: TextStyle(fontSize: 20),
+                        textAlign: TextAlign.center,
+                      ),
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) =>
+                                  questionsgroup(alldata.indexOf(catData))),
+                        );
+                      }),
+                )
+                .toList(),
+            gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
+              maxCrossAxisExtent: 200,
+              childAspectRatio: 3 / 2,
+              crossAxisSpacing: 50,
+              mainAxisSpacing: 100,
+            ),
           ),
-        ),
+        ]),
       ),
-      floatingActionButton: FloatingActionButton(
+      /* floatingActionButton: FloatingActionButton(
         onPressed: _incrementCounter,
         tooltip: 'Increment',
         child: const Icon(Icons.add),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
+      ),*/ // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
 }

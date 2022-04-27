@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:qurancompetition/Question.dart';
 import 'package:qurancompetition/provider.dart';
+import 'package:qurancompetition/thems.dart';
 
 class questionsgroup extends StatefulWidget {
   questionsgroup(int this.id, {Key? key}) : super(key: key);
@@ -20,52 +21,63 @@ class _questionsgroupState extends State<questionsgroup> {
       textDirection: TextDirection.rtl,
       child: Scaffold(
         appBar: AppBar(
+            backgroundColor: appbarcolor,
             actions: [Icon(Icons.back_hand)],
-            title: Text(groupQuestion['title'])),
-        body: GridView(
-          padding: const EdgeInsets.all(25),
-          children: groupQuestion['list']
-              .map<Widget>(
-                (catData) => ElevatedButton(
-                    style: ButtonStyle(
-                      backgroundColor: catData['slected']
-                          ? MaterialStateProperty.all(
-                              Color.fromARGB(255, 218, 36, 36),
-                            )
-                          : MaterialStateProperty.all(
-                              Color.fromARGB(255, 33, 165, 51)),
-                    ),
-                    child: Text(
-                      (int.parse(catData['id2'])).toString(),
-                    ),
-                    onPressed: () {
-                      List l = groupQuestion['list'] as List;
-                      /* setState(() {
-                        l.removeWhere(
-                            (element) => element['id2'] == catData['id2']);
-                      });*/
+            title: Text(groupQuestion['title'] + ' -  مسابقة القرآن الكريم  ')),
+        body: Container(
+          color: Prinarycolor,
+          child: GridView(
+            padding: const EdgeInsets.all(25),
+            children: groupQuestion['list']
+                .map<Widget>(
+                  (catData) => ElevatedButton(
+                      style: ButtonStyle(
+                        backgroundColor: catData['slected']
+                            ? MaterialStateProperty.all(
+                                secondrycolor,
+                              )
+                            : MaterialStateProperty.all(
+                                Prinarycolor,
+                              ),
+                      ),
+                      child: Text(
+                        (int.parse(catData['id2'])).toString(),
+                        style: TextStyle(
+                            color: catData['slected']
+                                ? Prinarycolor
+                                : secondrycolor,
+                            fontSize: fontSizetext,
+                            fontWeight: FontWeight.bold),
+                      ),
+                      onPressed: () {
+                        List l = groupQuestion['list'] as List;
+                        /* setState(() {
+                          l.removeWhere(
+                              (element) => element['id2'] == catData['id2']);
+                        });*/
 
-                      setState(() {
-                        var index = groupQuestion['list'].indexOf(catData);
-                        print(l.elementAt(index)['slected']);
-                        l.elementAt(index)['slected'] = true;
-                        print(l.elementAt(index)['slected']);
-                      });
+                        setState(() {
+                          var index = groupQuestion['list'].indexOf(catData);
+                          print(l.elementAt(index)['slected']);
+                          l.elementAt(index)['slected'] = true;
+                          print(l.elementAt(index)['slected']);
+                        });
 
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) =>
-                                Question(catData['answers'] as List<String>)),
-                      );
-                    }),
-              )
-              .toList(),
-          gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
-            maxCrossAxisExtent: 200,
-            childAspectRatio: 3 / 2,
-            crossAxisSpacing: 50,
-            mainAxisSpacing: 50,
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) =>
+                                  Question(catData['answers'] as List<String>)),
+                        );
+                      }),
+                )
+                .toList(),
+            gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
+              maxCrossAxisExtent: 200,
+              childAspectRatio: 3 / 2,
+              crossAxisSpacing: 50,
+              mainAxisSpacing: 50,
+            ),
           ),
         ),
 

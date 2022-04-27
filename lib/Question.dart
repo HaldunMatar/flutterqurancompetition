@@ -1,6 +1,5 @@
-import 'dart:ffi';
-
 import 'package:flutter/material.dart';
+import 'package:qurancompetition/thems.dart';
 
 class Question extends StatefulWidget {
   Question(List this.groupQuestions, {Key? key}) : super(key: key);
@@ -31,122 +30,151 @@ class _nameState extends State<Question> {
       textDirection: TextDirection.rtl,
       child: Scaffold(
           appBar: AppBar(
-            title: Text("أسئلة البطاقة"),
+            title: Text("أسئلة البطاقة   - مسابقة القرآن الكريم"),
+            backgroundColor: appbarcolor,
             automaticallyImplyLeading: false,
           ),
-          body: Column(mainAxisAlignment: MainAxisAlignment.start, children: [
-            //color: Colors.amber,
-            Padding(
-              padding: const EdgeInsets.only(
-                  bottom: 50, top: 50, left: 20, right: 20),
-              child: TextField(
-                style: TextStyle(fontSize: 50.0, color: Colors.black),
-                keyboardType: TextInputType.multiline,
-                controller: _textEditingController,
-                textAlignVertical: TextAlignVertical.center,
-                textAlign: TextAlign.right,
-                textInputAction: TextInputAction.newline,
-                minLines: 1,
-                maxLines: 5,
-                decoration: InputDecoration(
-                    border: OutlineInputBorder(),
-                    labelText: (widget.i + 1).toString(),
-                    labelStyle:
-                        TextStyle(fontSize: 100, fontWeight: FontWeight.bold)),
+          body: Container(
+            color: secondrycolor,
+            child:
+                Column(mainAxisAlignment: MainAxisAlignment.start, children: [
+              //color: Colors.amber,
+              Padding(
+                padding: const EdgeInsets.only(
+                    bottom: 50, top: 50, left: 20, right: 20),
+                child: TextField(
+                  style: TextStyle(fontSize: 50.0, color: Colors.black),
+                  keyboardType: TextInputType.multiline,
+                  controller: _textEditingController,
+                  textAlignVertical: TextAlignVertical.center,
+                  textAlign: TextAlign.right,
+                  textInputAction: TextInputAction.newline,
+                  minLines: 1,
+                  maxLines: 5,
+                  decoration: InputDecoration(
+                      border: OutlineInputBorder(),
+                      labelText: (widget.i + 1).toString(),
+                      labelStyle: TextStyle(
+                          fontSize: 100, fontWeight: FontWeight.bold)),
+                ),
               ),
-            ),
-            Center(
-              child: ElevatedButton(
-                  style: ButtonStyle(),
-                  child: Text(
-                    'التالي',
-                    style: TextStyle(fontSize: 20),
-                  ),
-                  onPressed: () {
-                    setState(() {
-                      if (widget.i < widget.groupQuestions.length - 1) {
-                        widget.i = widget.i + 1;
-                        _textEditingController.text =
-                            widget.groupQuestions[widget.i];
-                      } else {
-                        showDialog<String>(
-                          context: context,
-                          builder: (BuildContext context) => AlertDialog(
-                            title: const Text('سيدي الكريم'),
-                            content: const Text('لقد انتهت جميع  الأسئلة  '),
-                            actions: <Widget>[
-                              /* TextButton(
-                              onPressed: () => Navigator.pop(context, 'Cancel'),
-                              child: const Text('لا'),
-                            ),*/
-                              TextButton(
-                                onPressed: () => {Navigator.pop(context, 'ok')},
-                                child: const Text('نعم'),
-                              ),
-                            ],
-                          ),
-                        );
-                      }
-                    });
-                  }),
-            ),
-
-            Padding(
-              padding: const EdgeInsets.all(20.0),
-              child: Center(
-                child: ElevatedButton(
-                    style: ButtonStyle(),
-                    child: Text(
-                      'السابق',
-                      style: TextStyle(fontSize: 20),
-                    ),
-                    onPressed: () {
-                      setState(() {
-                        if (widget.i <= widget.groupQuestions.length - 1) {
-                          widget.i = widget.i - 1;
-                          _textEditingController.text =
-                              widget.groupQuestions[widget.i];
-                        } else {
-                          showDialog<String>(
-                            context: context,
-                            builder: (BuildContext context) => AlertDialog(
-                              title: const Text('سيدي  الكريم'),
-                              content: const Text(
-                                  'لقد انتهت  \n  \n  \nجميع  الأسئلة  '),
-                              actions: <Widget>[
-                                /* TextButton(
-                                onPressed: () => Navigator.pop(context, 'Cancel'),
-                                child: const Text('لا'),
-                              ),*/
-                                TextButton(
-                                  onPressed: () =>
-                                      {Navigator.pop(context, 'ok')},
-                                  child: const Text('نعم'),
-                                ),
-                              ],
-                            ),
-                          );
-                        }
-                      });
-                    }),
-              ),
-            ),
-            widget.i >= widget.groupQuestions.length - 1
-                ? Padding(
-                    padding: const EdgeInsets.all(8.0),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Center(
                     child: ElevatedButton(
-                        child: Text(
-                          'الرجوع  الى  بطاقة جديدة',
-                          style: TextStyle(
-                            fontSize: 20,
+                        style: ButtonStyle(
+                          backgroundColor: MaterialStateProperty.all(
+                            Prinarycolor,
                           ),
                         ),
+                        child: Text(
+                          'التالي',
+                          style: TextStyle(fontSize: 20),
+                        ),
                         onPressed: () {
-                          Navigator.of(context).pop();
+                          setState(() {
+                            if (widget.i < widget.groupQuestions.length - 1) {
+                              widget.i = widget.i + 1;
+                              _textEditingController.text =
+                                  widget.groupQuestions[widget.i];
+                            } else {
+                              showDialog<String>(
+                                context: context,
+                                builder: (BuildContext context) => AlertDialog(
+                                  title: const Text('سيدي الكريم'),
+                                  content:
+                                      const Text('لقد انتهت جميع  الأسئلة  '),
+                                  actions: <Widget>[
+                                    /* TextButton(
+                                    onPressed: () => Navigator.pop(context, 'Cancel'),
+                                    child: const Text('لا'),
+                                  ),*/
+                                    TextButton(
+                                      onPressed: () =>
+                                          {Navigator.pop(context, 'ok')},
+                                      child: const Text('نعم'),
+                                    ),
+                                  ],
+                                ),
+                              );
+                            }
+                          });
                         }),
-                  )
-                : Text('')
-          ])),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(20.0),
+                    child: Center(
+                      child: ElevatedButton(
+                          style: ButtonStyle(
+                            backgroundColor: MaterialStateProperty.all(
+                              Prinarycolor,
+                            ),
+                          ),
+                          child: Text(
+                            'السابق',
+                            style: TextStyle(fontSize: 20),
+                          ),
+                          onPressed: () {
+                            setState(() {
+                              if (widget.i <=
+                                  widget.groupQuestions.length - 1) {
+                                widget.i = widget.i - 1;
+                                _textEditingController.text =
+                                    widget.groupQuestions[widget.i];
+                              } else {
+                                showDialog<String>(
+                                  context: context,
+                                  builder: (BuildContext context) =>
+                                      AlertDialog(
+                                    title: const Text('سيدي  الكريم'),
+                                    content: const Text(
+                                        'لقد انتهت  \n  \n  \nجميع  الأسئلة  '),
+                                    actions: <Widget>[
+                                      /* TextButton(
+                                      onPressed: () => Navigator.pop(context, 'Cancel'),
+                                      child: const Text('لا'),
+                                    ),*/
+                                      TextButton(
+                                        onPressed: () =>
+                                            {Navigator.pop(context, 'ok')},
+                                        child: const Text('نعم'),
+                                      ),
+                                    ],
+                                  ),
+                                );
+                              }
+                            });
+                          }),
+                    ),
+                  ),
+                ],
+              ),
+              SizedBox(
+                height: 20,
+              ),
+              widget.i >= widget.groupQuestions.length - 1
+                  ? Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: ElevatedButton(
+                          style: ButtonStyle(
+                            backgroundColor: MaterialStateProperty.all(
+                              Prinarycolor,
+                            ),
+                          ),
+                          child: Text(
+                            'الرجوع  الى  بطاقة جديدة',
+                            style: TextStyle(
+                              fontSize: 20,
+                            ),
+                          ),
+                          onPressed: () {
+                            Navigator.of(context).pop();
+                          }),
+                    )
+                  : Text('')
+            ]),
+          )),
     );
   }
 }
