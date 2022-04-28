@@ -25,7 +25,8 @@ class _questionsgroupState extends State<questionsgroup> {
             actions: [Icon(Icons.back_hand)],
             title: Text(groupQuestion['title'] + ' -  مسابقة القرآن الكريم  ')),
         body: Container(
-          color: Prinarycolor,
+          color: secondrycolor,
+          //  color: Prinarycolor,
           child: GridView(
             padding: const EdgeInsets.all(25),
             children: groupQuestion['list']

@@ -5,6 +5,7 @@ import 'package:qurancompetition/provider.dart';
 import 'package:qurancompetition/thems.dart';
 
 import 'DATA.dart';
+import 'authScreen.dart';
 
 void main() {
   runApp(MyApp());
@@ -27,8 +28,10 @@ class MyApp extends StatelessWidget {
             //primarySwatch: Colors.blue,
             ),
         home: Directionality(
-            textDirection: TextDirection.rtl,
-            child: MyHomePage(title: 'مسابقة القرآن الكريم ')),
+          textDirection: TextDirection.rtl,
+          child: AuthScreen(),
+          // MyHomePage(title: 'مسابقة القرآن الكريم ')
+        ),
       ),
     );
   }
@@ -93,6 +96,9 @@ class _MyHomePageState extends State<MyHomePage> {
             children: context
                 .read<providerdata>()
                 .data
+                .where((element) =>
+                    element['userid'] == context.read<providerdata>().userId ||
+                    context.read<providerdata>().userId == 10)
                 .map(
                   (catData) => ElevatedButton(
                       style: ButtonStyle(

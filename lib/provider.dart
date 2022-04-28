@@ -5,4 +5,6 @@ import 'package:provider/provider.dart';
 
 class providerdata with ChangeNotifier {
   List data = DUMMY_CATEGORIES;
+
+  int userId = -1;
 }
