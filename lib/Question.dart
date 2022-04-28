@@ -26,6 +26,29 @@ class _nameState extends State<Question> {
 
   @override
   Widget build(BuildContext context) {
+    String s = widget.groupQuestions[widget.i];
+
+    String part1 = 'اسم السورة : البقرة  -    من      ';
+
+    print(s.indexOf('-    من    '));
+
+    int menndex = s.indexOf('-    من    ');
+    part1 = s.substring(0, menndex + 7);
+
+    String surename = s.substring(0, s.indexOf('-    من    '));
+
+    print(surename);
+    String ila = '……………………………………...   إلى     ';
+
+    int ilaindex = s.indexOf(ila);
+    String ayestart = s.substring(part1.length, ilaindex);
+
+    print(ayestart);
+
+    String ayesend = s.substring(ilaindex + ila.length);
+    // _textEditingController.text = ayesend;
+    print(ayesend);
+
     return Directionality(
       textDirection: TextDirection.rtl,
       child: Scaffold(
