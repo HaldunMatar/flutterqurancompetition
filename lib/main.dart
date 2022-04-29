@@ -78,61 +78,68 @@ class _MyHomePageState extends State<MyHomePage> {
     // The Flutter framework has been optimized to make rerunning build methods
     // fast, so that you can just rebuild anything that needs updating rather
     // than having to individually change instances of widgets.
-    return Scaffold(
-      appBar: AppBar(
-        backgroundColor: appbarcolor,
-        // Here we take the value from the MyHomePage object that was created by
-        // the App.build method, and use it to set our appbar title.
-        title: Text(widget.title),
-      ),
-      body: Center(
-        // Center is a layout widget. It takes a single child and positions it
-        // in the middle of the parent.
-        child: Stack(children: [
-          Container(color: secondrycolor),
-          GridView(
-            shrinkWrap: true,
-            padding: const EdgeInsets.all(25),
-            children: context
-                .read<providerdata>()
-                .data
-                .where((element) =>
-                    element['userid'] == context.read<providerdata>().userId ||
-                    context.read<providerdata>().userId == 10)
-                .map(
-                  (catData) => ElevatedButton(
-                      style: ButtonStyle(
-                          backgroundColor:
-                              MaterialStateProperty.all(Prinarycolor)),
-                      child: Text(
-                        catData['title'].toString(),
-                        style: TextStyle(fontSize: 20),
-                        textAlign: TextAlign.center,
-                      ),
-                      onPressed: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) =>
-                                  questionsgroup(alldata.indexOf(catData))),
-                        );
-                      }),
-                )
-                .toList(),
-            gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
-              maxCrossAxisExtent: 200,
-              childAspectRatio: 3 / 2,
-              crossAxisSpacing: 50,
-              mainAxisSpacing: 100,
-            ),
+    return Directionality(
+      textDirection: TextDirection.rtl,
+      child: Scaffold(
+        appBar: AppBar(
+          backgroundColor: appbarcolor,
+          // Here we take the value from the MyHomePage object that was created by
+          // the App.build method, and use it to set our appbar title.
+          title: Text(widget.title),
+          leading: Image.asset(
+            'images/Asset-300.png',
           ),
-        ]),
+        ),
+        body: Center(
+          // Center is a layout widget. It takes a single child and positions it
+          // in the middle of the parent.
+          child: Stack(children: [
+            Container(color: secondrycolor),
+            GridView(
+              shrinkWrap: true,
+              padding: const EdgeInsets.all(25),
+              children: context
+                  .read<providerdata>()
+                  .data
+                  .where((element) =>
+                      element['userid'] ==
+                          context.read<providerdata>().userId ||
+                      context.read<providerdata>().userId == 10)
+                  .map(
+                    (catData) => ElevatedButton(
+                        style: ButtonStyle(
+                            backgroundColor:
+                                MaterialStateProperty.all(Prinarycolor)),
+                        child: Text(
+                          catData['title'].toString(),
+                          style: TextStyle(fontSize: 20),
+                          textAlign: TextAlign.center,
+                        ),
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) =>
+                                    questionsgroup(alldata.indexOf(catData))),
+                          );
+                        }),
+                  )
+                  .toList(),
+              gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
+                maxCrossAxisExtent: 200,
+                childAspectRatio: 3 / 2,
+                crossAxisSpacing: 50,
+                mainAxisSpacing: 100,
+              ),
+            ),
+          ]),
+        ),
+        /* floatingActionButton: FloatingActionButton(
+          onPressed: _incrementCounter,
+          tooltip: 'Increment',
+          child: const Icon(Icons.add),
+        ),*/ // This trailing comma makes auto-formatting nicer for build methods.
       ),
-      /* floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
-      ),*/ // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
 }

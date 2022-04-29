@@ -38,17 +38,21 @@ class AuthScreen extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: <Widget>[
+                  Image.asset(
+                    'images/Asset-300.png',
+                    width: 200,
+                    height: 200,
+                  ),
                   Flexible(
                     child: Container(
                       margin: EdgeInsets.only(bottom: 20.0),
                       padding:
                           EdgeInsets.symmetric(vertical: 8.0, horizontal: 94.0),
-                      transform: Matrix4.rotationZ(-8 * pi / 180)
-                        ..translate(-10.0),
+
                       // ..translate(-10.0),
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(20),
-                        color: Colors.deepOrange.shade900,
+                        color: appbarcolor,
                         boxShadow: [
                           BoxShadow(
                             blurRadius: 8,
@@ -159,8 +163,7 @@ class _AuthCardState extends State<AuthCard>
   Future<void> _submit() async {
     try {
       _formKey.currentState?.save();
-      if (_authData['email'] == 'admin' &&
-          _authData['password'] == 'Ramadan22') {
+      if (_authData['email'] == 'admin' && _authData['password'] == '789') {
         context.read<providerdata>().userId = 10;
         Navigator.push(
           context,
@@ -178,7 +181,7 @@ class _AuthCardState extends State<AuthCard>
         );
         //  MyHomePage(title: 'مسابقة القرآن الكريم ');
       } else if (_authData['email'] == 'level1' &&
-          _authData['password'] == 'Abubakeir548') {
+          _authData['password'] == '121') {
         context.read<providerdata>().userId = 1;
         Navigator.push(
           context,
@@ -187,7 +190,7 @@ class _AuthCardState extends State<AuthCard>
         );
         //  MyHomePage(title: 'مسابقة القرآن الكريم ');
       } else if (_authData['email'] == 'level2' &&
-          _authData['password'] == 'Omar985') {
+          _authData['password'] == '131') {
         context.read<providerdata>().userId = 2;
         Navigator.push(
           context,
@@ -196,7 +199,7 @@ class _AuthCardState extends State<AuthCard>
         );
         //  MyHomePage(title: 'مسابقة القرآن الكريم ');
       } else if (_authData['email'] == 'level3' &&
-          _authData['password'] == 'Othman526') {
+          _authData['password'] == '141') {
         context.read<providerdata>().userId = 3;
         Navigator.push(
           context,
@@ -206,7 +209,7 @@ class _AuthCardState extends State<AuthCard>
         //  MyHomePage(title: 'مسابقة القرآن الكريم ');
       }
 
-      if (_authData['email'] == 'level4' && _authData['password'] == 'Ali951') {
+      if (_authData['email'] == 'level4' && _authData['password'] == '151') {
         context.read<providerdata>().userId = 4;
         Navigator.push(
           context,

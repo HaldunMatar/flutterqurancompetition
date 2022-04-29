@@ -58,6 +58,9 @@ class _nameState extends State<Question> {
             title: Text("أسئلة البطاقة   - مسابقة القرآن الكريم"),
             backgroundColor: appbarcolor,
             automaticallyImplyLeading: false,
+            leading: Image.asset(
+              'images/Asset-300.png',
+            ),
           ),
           body: Container(
             color: secondrycolor,
@@ -116,7 +119,7 @@ class _nameState extends State<Question> {
                             showDialog<String>(
                               context: context,
                               builder: (BuildContext context) => AlertDialog(
-                                title: const Text('سيدي الكريم'),
+                                title: const Text('عزيزي المشارك'),
                                 content:
                                     const Text('لقد انتهت جميع  الأسئلة  '),
                                 actions: <Widget>[
@@ -157,7 +160,7 @@ class _nameState extends State<Question> {
                             showDialog<String>(
                               context: context,
                               builder: (BuildContext context) => AlertDialog(
-                                title: const Text('سيدي  الكريم'),
+                                title: const Text('عزيزي المشارك'),
                                 content: const Text(
                                     '  تم الرجوع  إلى السؤال الأول '),
                                 actions: <Widget>[
@@ -220,7 +223,7 @@ class _nameState extends State<Question> {
                       builder: (BuildContext context) => AlertDialog(
                         backgroundColor: secondrycolor,
                         title: Center(
-                            child: const Text(' أخي الكريم',
+                            child: const Text(' عزيزي المشارك ',
                                 style: TextStyle(
                                     fontSize: 20,
                                     color: Color.fromARGB(255, 207, 19, 5),
