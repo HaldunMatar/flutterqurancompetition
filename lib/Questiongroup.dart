@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:qurancompetition/Question.dart';
 import 'package:qurancompetition/provider.dart';
+import 'package:qurancompetition/setting.dart';
 import 'package:qurancompetition/thems.dart';
 
 class questionsgroup extends StatefulWidget {
@@ -22,8 +23,15 @@ class _questionsgroupState extends State<questionsgroup> {
       child: Scaffold(
         appBar: AppBar(
           backgroundColor: appbarcolor,
-          actions: [Icon(Icons.back_hand)],
-          title: Text(groupQuestion['title'] + ' -  مسابقة القرآن الكريم  '),
+          actions: [
+            new IconButton(
+              icon: new Icon(Icons.arrow_back, color: Colors.white),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            ),
+          ],
+          title: Text(groupQuestion['title'] + ' -' + mainName),
           leading: Image.asset(
             'images/Asset-300.png',
           ),

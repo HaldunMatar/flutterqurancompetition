@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:qurancompetition/main.dart';
 import 'package:qurancompetition/provider.dart';
+import 'package:qurancompetition/setting.dart';
 import 'package:qurancompetition/thems.dart';
 
 enum AuthMode { Signup, Login }
@@ -62,9 +63,12 @@ class AuthScreen extends StatelessWidget {
                         ],
                       ),
                       child: Text(
-                        'مسابقة القرآن الكريم ',
+                        mainName,
                         style: TextStyle(
-                          fontSize: 50,
+                          fontSize: Theme.of(context).platform ==
+                                  TargetPlatform.windows
+                              ? 50
+                              : 25,
                           fontFamily: 'Anton',
                           fontWeight: FontWeight.normal,
                         ),
@@ -168,7 +172,7 @@ class _AuthCardState extends State<AuthCard>
         Navigator.push(
           context,
           MaterialPageRoute(
-              builder: (context) => MyHomePage(title: 'مسابقة القرآن الكريم ')),
+              builder: (context) => const MyHomePage(title: mainName)),
         );
         //  MyHomePage(title: 'مسابقة القرآن الكريم ');
       } else if (_authData['email'] == 'level0' &&
@@ -177,7 +181,7 @@ class _AuthCardState extends State<AuthCard>
         Navigator.push(
           context,
           MaterialPageRoute(
-              builder: (context) => MyHomePage(title: 'مسابقة القرآن الكريم ')),
+              builder: (context) => const MyHomePage(title: mainName)),
         );
         //  MyHomePage(title: 'مسابقة القرآن الكريم ');
       } else if (_authData['email'] == 'level1' &&
@@ -186,7 +190,7 @@ class _AuthCardState extends State<AuthCard>
         Navigator.push(
           context,
           MaterialPageRoute(
-              builder: (context) => MyHomePage(title: 'مسابقة القرآن الكريم ')),
+              builder: (context) => const MyHomePage(title: mainName)),
         );
         //  MyHomePage(title: 'مسابقة القرآن الكريم ');
       } else if (_authData['email'] == 'level2' &&
@@ -195,7 +199,7 @@ class _AuthCardState extends State<AuthCard>
         Navigator.push(
           context,
           MaterialPageRoute(
-              builder: (context) => MyHomePage(title: 'مسابقة القرآن الكريم ')),
+              builder: (context) => const MyHomePage(title: mainName)),
         );
         //  MyHomePage(title: 'مسابقة القرآن الكريم ');
       } else if (_authData['email'] == 'level3' &&
@@ -204,7 +208,7 @@ class _AuthCardState extends State<AuthCard>
         Navigator.push(
           context,
           MaterialPageRoute(
-              builder: (context) => MyHomePage(title: 'مسابقة القرآن الكريم ')),
+              builder: (context) => const MyHomePage(title: mainName)),
         );
         //  MyHomePage(title: 'مسابقة القرآن الكريم ');
       }
@@ -214,7 +218,7 @@ class _AuthCardState extends State<AuthCard>
         Navigator.push(
           context,
           MaterialPageRoute(
-              builder: (context) => MyHomePage(title: 'مسابقة القرآن الكريم ')),
+              builder: (context) => const MyHomePage(title: mainName)),
         );
         //  MyHomePage(title: 'مسابقة القرآن الكريم ');
       }

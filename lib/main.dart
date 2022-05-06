@@ -4,7 +4,6 @@ import 'package:qurancompetition/Questiongroup.dart';
 import 'package:qurancompetition/provider.dart';
 import 'package:qurancompetition/thems.dart';
 
-import 'DATA.dart';
 import 'authScreen.dart';
 
 void main() {

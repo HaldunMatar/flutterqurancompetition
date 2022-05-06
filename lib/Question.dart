@@ -1,6 +1,7 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
+import 'package:qurancompetition/setting.dart';
 import 'package:qurancompetition/thems.dart';
 
 class Question extends StatefulWidget {
@@ -55,7 +56,7 @@ class _nameState extends State<Question> {
       textDirection: TextDirection.rtl,
       child: Scaffold(
           appBar: AppBar(
-            title: Text("أسئلة البطاقة   - مسابقة القرآن الكريم"),
+            title: const Text("  $mainName    أسئلة البطاقة   "),
             backgroundColor: appbarcolor,
             automaticallyImplyLeading: false,
             leading: Image.asset(
