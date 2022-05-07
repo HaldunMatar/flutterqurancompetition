@@ -71,6 +71,7 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     var alldata = context.read<providerdata>().data;
+
     // This method is rerun every time setState is called, for instance as done
     // by the _incrementCounter method above.
     //

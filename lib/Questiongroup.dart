@@ -41,50 +41,52 @@ class _questionsgroupState extends State<questionsgroup> {
           //  color: Prinarycolor,
           child: GridView(
             padding: const EdgeInsets.all(25),
-            children: groupQuestion['list']
-                .map<Widget>(
-                  (catData) => ElevatedButton(
-                      style: ButtonStyle(
-                        backgroundColor: catData['slected']
-                            ? MaterialStateProperty.all(
-                                secondrycolor,
-                              )
-                            : MaterialStateProperty.all(
-                                Prinarycolor,
-                              ),
-                      ),
-                      child: Text(
-                        (int.parse(catData['id2'])).toString(),
-                        style: TextStyle(
-                            color: catData['slected']
-                                ? Prinarycolor
-                                : secondrycolor,
-                            fontSize: fontSizetext,
-                            fontWeight: FontWeight.bold),
-                      ),
-                      onPressed: () {
-                        List l = groupQuestion['list'] as List;
-                        /* setState(() {
+            children: (groupQuestion['list'] as List).map<Widget>(
+              (catData) {
+                var indexcard =
+                    (groupQuestion['list'] as List).indexOf(catData);
+                return ElevatedButton(
+                  style: ButtonStyle(
+                    backgroundColor: catData['slected']
+                        ? MaterialStateProperty.all(
+                            secondrycolor,
+                          )
+                        : MaterialStateProperty.all(
+                            Prinarycolor,
+                          ),
+                  ),
+                  child: Text(
+                    (indexcard + 1).toString(),
+                    style: TextStyle(
+                        color:
+                            catData['slected'] ? Prinarycolor : secondrycolor,
+                        fontSize: fontSizetext,
+                        fontWeight: FontWeight.bold),
+                  ),
+                  onPressed: () {
+                    List l = groupQuestion['list'] as List;
+                    /* setState(() {
                           l.removeWhere(
                               (element) => element['id2'] == catData['id2']);
                         });*/
 
-                        setState(() {
-                          var index = groupQuestion['list'].indexOf(catData);
-                          print(l.elementAt(index)['slected']);
-                          l.elementAt(index)['slected'] = true;
-                          print(l.elementAt(index)['slected']);
-                        });
+                    setState(() {
+                      var index = groupQuestion['list'].indexOf(catData);
+                      print(l.elementAt(index)['slected']);
+                      l.elementAt(index)['slected'] = true;
+                      print(l.elementAt(index)['slected']);
+                    });
 
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) =>
-                                  Question(catData['answers'] as List<String>)),
-                        );
-                      }),
-                )
-                .toList(),
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) =>
+                              Question(catData['answers'] as List<String>)),
+                    );
+                  },
+                );
+              },
+            ).toList(),
             gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
               maxCrossAxisExtent: 200,
               childAspectRatio: 3 / 2,
